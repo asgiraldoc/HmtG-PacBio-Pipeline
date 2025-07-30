@@ -61,7 +61,7 @@ conda create -n HmtG-PacBio python=3.9 -y
 conda activate HmtG-PacBio
 
 # 3. Install system dependencies
-conda install -c bioconda mafft blast -y
+conda install -c bioconda mafft blast=2.16.0 -y
 
 # 4. Install Python packages
 pip install -r requirements.txt
