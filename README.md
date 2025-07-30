@@ -1,4 +1,4 @@
-# HmtG-PacBio Pipeline
+# HmtG-PacBio Pipeline v2
 
 > Comprehensive pipeline for processing Haemosporidian mitochondrial genome data from PacBio sequencing.
 
