@@ -53,7 +53,7 @@
 
 ```bash
 # 1. Clone this repository
-git clone [https://github.com/username/HmtG-PacBio-Pipeline.git](https://github.com/asgiraldoc/HmtG-PacBio-Pipeline.git)
+git clone https://github.com/asgiraldoc/HmtG-PacBio-Pipeline.git
 cd HmtG-PacBio-Pipeline
 
 # 2. Create & activate conda environment
