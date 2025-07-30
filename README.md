@@ -42,11 +42,11 @@
 - **MAFFT v7.520**  
 - **BLAST+ 2.16.0**  
 - Python libraries:  
-    biopython==1.81
-    matplotlib==3.5.2
-    numpy==1.25.2
-    pandas==1.5.3
-    scikit-learn==1.3.2
+   - biopython==1.81
+   - matplotlib==3.5.2
+   - numpy==1.25.2
+   - pandas==1.5.3
+   - scikit-learn==1.3.2
 
 ---
 
