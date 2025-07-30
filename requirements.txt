@@ -1,0 +1,6 @@
+biopython
+numpy
+scikit-learn
+tensorflow
+matplotlib
+pandas
