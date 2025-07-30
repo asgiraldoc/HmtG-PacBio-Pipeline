@@ -80,7 +80,7 @@ python HmtG-PacBio-Pipeline.py   -rR /path/to/raw_reads.fastq   [ -pF FORWARD_PR
 
 | Flag                   | Description                                           | Default                                              |
 | ---------------------- | ----------------------------------------------------- | ---------------------------------------------------- |
-| `-rR`, `--rawReads`    | Raw PacBio reads (FASTQ/FASTA) **(required)**         | —                                                    |
+| `-rR`, `--rawReads`    | Raw PacBio reads (FASTQ/FASTA) **(required)**         | mandatory                                            |
 | `-pF`, `--primerF`     | Forward primer sequence                              | `GATTCTCTCCACACTTCAATTCGTACTTC`                     |
 | `-pR`, `--primerR`     | Reverse primer sequence                              | `GAAGTACGAATTGAAGTGTGGAGAGAATC`                     |
 | `-eps`, `--epsDBScan`  | Epsilon parameter for DBSCAN clustering               | `1.0`                                                |
