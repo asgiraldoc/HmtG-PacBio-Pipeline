@@ -3,7 +3,10 @@ import os
 import argparse
 import subprocess
 
-sys.path.append('scripts/')
+# Add script directory to path to find custom modules
+script_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(script_dir, 'scripts'))
+
 
 ## import functions
 from readsRedirection import primerDetection
@@ -24,12 +27,12 @@ import summary
 
 
 def main():
-    ## Arguments 
+    ## Arguments
     parser = argparse.ArgumentParser(description='Haemosporidian Mitochondrial Genome PacBio Pipeline (HmtG-PacBio Pipeline)')
     ### main arguments
     parser.add_argument('-rR', '--rawReads', type=str, help="rawReads from PacBio sequencing", required=True)
-    parser.add_argument('-pF', '--primerF', type=str, help="primerF 5'-3', default=GATTCTCTCCACACTTCAATTCGTACTTC", default='GATTCTCTC')
-    parser.add_argument('-pR', '--primerR', type=str, help="primerR 3'-5', default=GAAGTACGAATTGAAGTGTGGAGAGAATC", default='AGACCGAACCTTGGACTC')
+    parser.add_argument('-pF', '--primerF', type=str, help="primerF 5'-3', default='GATTCTCTCCACACTTCAATTCGTACTTC'", default='GATTCTCTC')
+    parser.add_argument('-pR', '--primerR', type=str, help="primerR 3'-5', default='GAAGTACGAATTGAAGTGTGGAGAGAATC'", default='AGACCGAACCTTGGACTC')
     parser.add_argument('-eps', '--epsDBScan', type=float, help="epsilon value for DBScan clustering, default=1.0", default=1.0)
     parser.add_argument('-rF', '--RemoveFiles', type=str, help="Removing temporal files, default=yes", default='yes')
     parser.add_argument('-rB', '--blastn', type=str, help="Run blastn locally, default=yes", default='yes')
@@ -38,10 +41,7 @@ def main():
 
     ## files
     rawReads = args.rawReads
-    nameSample = str(rawReads).split(".")[0]
-    dirSample = str(rawReads).split("/")[0]
-    dirb = os.getcwd()
-    dirc = os.getcwd()+"/"+dirSample
+    nameSample = os.path.splitext(os.path.basename(rawReads))[0]
 
     ## run readsRedirection
     primerF = args.primerF
@@ -49,54 +49,49 @@ def main():
     primerDetection(rawReads, primerF, primerR)
 
     rmFiles = args.RemoveFiles
-    
-    ## run raw aligment
 
-    no_long_exists = any(f.endswith("_mafftRaw.fasta") for f in os.listdir(dirc))
+    ## run raw aligment
+    mafftRawOut_name = nameSample + "_mafftRaw.fasta"
+    no_long_exists = any(f.endswith("_mafftRaw.fasta") for f in os.listdir())
     if not no_long_exists:
         print("Running first alignment...")
-        mafftRawOut = str(rawReads).split(".")[0] + "_nolong.fasta"
-        mafftRaw(mafftRawOut, dirc)
+        mafftRawIn = nameSample + "_nolong.fasta"
+        mafftRaw(mafftRawIn)
     else:
-        mafftRawOut = str(rawReads).split(".")[0] + "_mafftRaw.fasta"
         print("A file with extension '_mafftRaw.fasta' was found, no initial alignment is required.")
 
     ## run convert DNA seq to Binary format
-
-    no_long_exists = any(f.endswith("_bin.txt") for f in os.listdir(dirc))
+    bin_out_name = nameSample + "_bin.txt"
+    no_long_exists = any(f.endswith("_bin.txt") for f in os.listdir())
     if not no_long_exists:
-        fasta2binOut= str(rawReads).split(".")[0] + "_mafftRaw.fasta"
-        fasta2bin(fasta2binOut, dirc)
+        fasta2bin(mafftRawOut_name)
         print("Converting DNA into bytes...")
     else:
         print("A file with extension '_bin.txt' was found, no convertion is required.")
 
     ## run VAE program and clustering
     epsilon = args.epsDBScan
-    VAErunOut = str(rawReads).split(".")[0] + "_bin.txt"
-    mu, VAErunData = VAE_model(VAErunOut, epsilon)
-    nameCluster = str(rawReads).split(".")[0]
-    extract_cluster_labels_dbscan(mu, VAErunData, nameCluster, epsilon)
+    mu, VAErunData = VAE_model(bin_out_name, epsilon)
+    extract_cluster_labels_dbscan(mu, VAErunData, nameSample, epsilon)
 
     ## run cluster2fasta
-    os.chdir(dirc)
-    txtCluster = [f for f in os.listdir() if f.endswith('-.txt') and f.startswith(nameSample.split("/")[0])]
+    txtCluster = [f for f in os.listdir() if f.endswith('-.txt') and f.startswith(nameSample)]
     for headers_file in txtCluster:
         mapped_output_file = headers_file.split(".")[0] + ".fa"
-        txt2fasta(mafftRawOut.split("/")[1], headers_file, mapped_output_file)
+        txt2fasta(mafftRawOut_name, headers_file, mapped_output_file)
 
     print("Running last alignment...")
     ## run final aligment
-    filesM = [f for f in os.listdir() if f.endswith('.fa') and f.startswith(nameSample.split("/")[0])]
+    filesM = [f for f in os.listdir() if f.endswith('.fa') and f.startswith(nameSample)]
     mafftFinal(filesM)
 
     ## consensus output
-    filesC = [f for f in os.listdir(dirc) if f.endswith('_mafftFinal.fasta') and f.startswith(nameSample.split("/")[0])]
+    filesC = [f for f in os.listdir() if f.endswith('_mafftFinal.fasta') and f.startswith(nameSample)]
     cons(filesC)
 
     ## concatenate output
-    filesC0  = [f for f in os.listdir() if f.endswith('_mafftFinal.fasta') and f.startswith(nameSample.split("/")[0])]
-    filesC1  = [f for f in os.listdir() if f.endswith('_consensus.fasta')  and f.startswith(nameSample.split("/")[0])]
+    filesC0  = [f for f in os.listdir() if f.endswith('_mafftFinal.fasta') and f.startswith(nameSample)]
+    filesC1  = [f for f in os.listdir() if f.endswith('_consensus.fasta')  and f.startswith(nameSample)]
     concat(filesC1, filesC0)
 
     ## gapfree output
@@ -135,8 +130,10 @@ def main():
     ## run local Blast
     if args.blastn == 'yes' or args.blastn == 'y' or args.blastn == 'Yes' or args.blastn == 'Y':
         print("Running local blastn...")
-        make_blast_db(dirb + '/blast/HmtG_database_PacBio.fasta', 'nucl', dirb + '/blast/HmtG_database_PacBio')
-        run_blast(dirc, dirb + '/blast/HmtG_database_PacBio')
+        blast_db_base = os.path.join(script_dir, 'blast', 'HmtG_database_PacBio')
+        blast_db_fasta = blast_db_base + '.fasta'
+        make_blast_db(blast_db_fasta, 'nucl', blast_db_base)
+        run_blast('.', blast_db_base)
 
 
     # removing temporal files

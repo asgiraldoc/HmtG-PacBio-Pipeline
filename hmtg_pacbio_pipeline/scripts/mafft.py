@@ -1,7 +1,7 @@
 import subprocess
 import os
 
-def mafftRaw(input_file, dir_out):
+def mafftRaw(input_file):
     # Define the MAFFT command as a list of strings
     mafft_command = ["mafft", "--reorder", "--thread", "30", input_file]
     outf0 = str(input_file).split("/")[-1]
@@ -11,8 +11,6 @@ def mafftRaw(input_file, dir_out):
             # Redirigir stderr a /dev/null para no mostrar mensajes de error
             with open(os.devnull, 'w') as devnull:
                 subprocess.run(mafft_command, stdout=outfile, stderr=devnull)
-    mv_command = ["mv", outf, dir_out]
-    subprocess.run(mv_command)
 
 def mafftFinal(list_files):
     for input_file in list_files:
