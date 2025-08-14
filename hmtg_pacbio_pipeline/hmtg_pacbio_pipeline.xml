@@ -1,0 +1,78 @@
+<tool id="hmtg_pacbio_pipeline" name="HmtG-PacBio Pipeline" version="2.0.0">
+    <description>Comprehensive pipeline for processing Haemosporidian mitochondrial genome data from PacBio sequencing.</description>
+    <macros>
+        <import>tool_dependencies.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__/HmtG-PacBio-Pipeline.py'
+        -rR '$rawReads'
+        -pF '$primerF'
+        -pR '$primerR'
+        -eps $epsDBScan
+        #if str($remove_files) == "yes":
+            -rF 'yes'
+        #else
+            -rF 'no'
+        #end if
+        #if str($run_blast) == "yes":
+            -rB 'yes'
+        #else
+            -rB 'no'
+        #end if
+        && mkdir -p '$summary.extra_files_path'
+        && cp summary_distances.tsv '$summary'
+        && mkdir -p '$clusters.extra_files_path'
+        && cp *_cluster.fasta '$clusters.extra_files_path/'
+        && cp *.png '$clusters.extra_files_path/'
+        #if str($run_blast) == "yes"
+            && mkdir -p '$blast_results.extra_files_path'
+            && cp blast_results/* '$blast_results.extra_files_path/'
+        #end if
+    ]]></command>
+    <inputs>
+        <param name="rawReads" type="data" format="fasta" label="Raw PacBio Reads" help="Input FASTA file with raw PacBio reads."/>
+        <param name="primerF" type="text" value="GATTCTCTCCACACTTCAATTCGTACTTC" label="Forward Primer" help="Forward primer sequence (5'-3')."/>
+        <param name="primerR" type="text" value="GAAGTACGAATTGAAGTGTGGAGAGAATC" label="Reverse Primer" help="Reverse primer sequence (3'-5')."/>
+        <param name="epsDBScan" type="float" value="1.0" label="Epsilon for DBSCAN" help="Epsilon value for DBSCAN clustering."/>
+        <param name="remove_files" type="select" label="Remove temporary files?">
+            <option value="yes" selected="true">Yes</option>
+            <option value="no">No</option>
+        </param>
+        <param name="run_blast" type="select" label="Run local BLASTn?">
+            <option value="yes" selected="true">Yes</option>
+            <option value="no">No</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="summary" format="tsv" label="Summary Distances"/>
+        <collection name="clusters" type="list" label="Haplotype Clusters and Plots">
+            <discover_datasets pattern="(?P<designation>.*)\.fasta" format="fasta" directory="." />
+            <discover_datasets pattern="(?P<designation>.*)\.png" format="png" directory="." />
+        </collection>
+        <collection name="blast_results" type="list" label="BLASTn Results">
+            <discover_datasets pattern=".*" format="txt" directory="blast_results" />
+        </collection>
+    </outputs>
+    <help><![CDATA[
+        **What it does**
+
+        This tool runs the HmtG-PacBio Pipeline, a comprehensive workflow for processing Haemosporidian mitochondrial genome data from PacBio sequencing.
+        It performs primer detection, sequence alignment, clustering, and optionally a local BLAST search.
+
+        **Inputs**
+
+        - **Raw PacBio Reads:** A FASTA file containing the raw reads from PacBio sequencing.
+        - **Forward Primer:** The forward primer sequence.
+        - **Reverse Primer:** The reverse primer sequence.
+        - **Epsilon for DBSCAN:** The epsilon parameter for the DBSCAN clustering algorithm.
+        - **Remove temporary files?:** Choose whether to keep or remove intermediate files.
+        - **Run local BLASTn?:** Choose whether to run a local BLASTn search against the included database.
+
+        **Outputs**
+
+        - **Summary Distances:** A TSV file containing pairwise genetic distances.
+        - **Haplotype Clusters and Plots:** A collection of FASTA files representing the final haplotype clusters, along with PNG plots from the analysis.
+        - **BLASTn Results:** If enabled, a collection of text files with the BLASTn search results.
+    ]]></help>
+</tool>

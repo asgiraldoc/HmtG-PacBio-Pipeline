@@ -1,0 +1,19 @@
+name: hmtg_pacbio_pipeline
+owner: asgiraldo
+description: "A comprehensive pipeline for processing Haemosporidian mitochondrial genome data from PacBio sequencing."
+long_description: |
+  This tool runs the HmtG-PacBio Pipeline, a comprehensive workflow for processing Haemosporidian mitochondrial genome data from PacBio sequencing.
+  It performs primer detection, sequence alignment, clustering, and optionally a local BLAST search.
+categories:
+  - Sequence Analysis
+  - Metagenomics
+homepage_url: https://github.com/asgiraldoc/HmtG-PacBio-Pipeline
+remote_repository_url: https://github.com/asgiraldoc/HmtG-PacBio-Pipeline
+type: unrestricted
+include:
+  - hmtg_pacbio_pipeline/hmtg_pacbio_pipeline.xml
+  - hmtg_pacbio_pipeline/tool_dependencies.xml
+  - hmtg_pacbio_pipeline/HmtG-PacBio-Pipeline.py
+  - hmtg_pacbio_pipeline/scripts/
+  - hmtg_pacbio_pipeline/blast/
+  - hmtg_pacbio_pipeline/requirements.txt
