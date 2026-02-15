@@ -1,0 +1,95 @@
+/* Escalante–Pacheco Lab branding overrides for sphinx_rtd_theme
+   Keep this file small & readable; avoid fighting the theme.
+*/
+
+:root {
+  --lab-accent: #1f6feb;      /* blue */
+  --lab-accent-2: #2ea043;    /* green */
+  --lab-dark: #0b1220;        /* near-black */
+}
+
+/* Sidebar + top nav */
+.wy-nav-side {
+  background: var(--lab-dark);
+}
+
+.wy-side-nav-search,
+.wy-nav-top {
+  background: var(--lab-accent);
+}
+
+/* Sidebar search input */
+.wy-side-nav-search input[type="text"] {
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* Make the lab logo behave (it's a wide banner) */
+.wy-side-nav-search a img.logo {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  margin: 0.25rem auto 0.5rem;
+}
+
+/* Links */
+.wy-menu-vertical a {
+  color: rgba(255,255,255,0.90);
+}
+
+.wy-menu-vertical a:hover {
+  background: rgba(31, 111, 235, 0.22);
+}
+
+.wy-menu-vertical li.current > a {
+  background: rgba(46, 160, 67, 0.18);
+  border-right: 3px solid var(--lab-accent-2);
+}
+
+/* Content links */
+.rst-content a {
+  color: var(--lab-accent);
+}
+
+.rst-content a:visited {
+  color: #8e44ad; /* purple for visited */
+}
+
+/* Call-to-action buttons (used via raw HTML snippets) */
+.lab-cta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.25rem;
+}
+
+.lab-cta a {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.lab-cta a.primary {
+  background: var(--lab-accent);
+  color: #fff !important;
+}
+
+.lab-cta a.secondary {
+  background: rgba(46, 160, 67, 0.14);
+  color: #0b3d12 !important;
+  border-color: rgba(46, 160, 67, 0.35);
+}
+
+.lab-cta a.ghost {
+  background: transparent;
+  color: var(--lab-accent) !important;
+  border-color: rgba(31, 111, 235, 0.45);
+}
+
+/* Keep code blocks readable */
+.rst-content pre {
+  border-radius: 10px;
+}

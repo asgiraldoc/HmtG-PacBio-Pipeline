@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experimental protocol context &mdash; Haemo Mito Pipeline — Escalante–Pacheco Lab</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=9fd9e425" />
+
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pipeline design" href="pipeline_design.html" />
+    <link rel="prev" title="Optional parameters" href="../parameters/optional.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Welcome</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#what-is-this-pipeline">What is this pipeline?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#what-it-is-not">What it is <em>not</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#inputs-and-outputs-at-a-glance">Inputs and outputs at a glance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#python-dependencies-core">Python dependencies (core)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#mafft">MAFFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#blast-optional">BLAST (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#build-the-docs-locally-this-website">Build the docs locally (this website)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#make-sure-mafft-works">1) Make sure MAFFT works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#run-the-pipeline-cli">2) Run the pipeline (CLI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#inspect-outputs">3) Inspect outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Downloads</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../downloads.html#windows-desktop-gui">Windows Desktop GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../downloads.html#macos-desktop-gui">macOS Desktop GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../downloads.html#cli-workflow">CLI workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../downloads.html#data-database-downloads">Data + database downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../downloads.html#update-these-placeholders">Update these placeholders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about_lab.html">About the lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about_lab.html#contact-and-links">Contact and links</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/run_cli.html">Run from the CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_cli.html#basic-run">Basic run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_cli.html#choose-output-folder-sample-name">Choose output folder + sample name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_cli.html#quality-filter-subsampling">Quality filter + subsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_cli.html#mafft-settings">MAFFT settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_cli.html#re-running-overwriting">Re-running / overwriting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/run_gui.html">Run from the GUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_gui.html#basic-panel">Basic panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_gui.html#advanced-panel-collapsible">Advanced panel (collapsible)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/run_gui.html#recommended-folder-layout-project-local-tools">Recommended folder layout (project-local tools)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/using_blast.html">Using local BLAST</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/using_blast.html#what-blast-is-used-for-in-this-workflow">What BLAST is used for (in this workflow)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/using_blast.html#install-blast">Install BLAST+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/using_blast.html#prepare-a-database">Prepare a database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/using_blast.html#run-and-verify">Run and verify</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/interpreting_results.html">Interpreting results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/interpreting_results.html#the-pdf-report">The PDF report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/interpreting_results.html#fasta-outputs">FASTA outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/interpreting_results.html#json-report">JSON report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parameters</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../parameters/essential.html">Essential parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/essential.html#input">Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/essential.html#output-naming">Output naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/essential.html#read-filtering-subsampling">Read filtering / subsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/essential.html#alignment-mafft">Alignment (MAFFT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/essential.html#reproducibility">Reproducibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parameters/optional.html">Optional parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/optional.html#blast-integration-optional">BLAST integration (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/optional.html#primer-trimming-orientation">Primer trimming/orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/optional.html#advanced-gui-only-toggles">Advanced GUI-only toggles</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Experimental protocol context</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#target-region">Target region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#primer-design-and-multiplexing-strategy">Primer design and multiplexing strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pcr-overview-summary">PCR overview (summary)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sequencing">Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-coverage-rule-of-thumb">Recommended coverage (rule of thumb)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-this-relates-to-the-software">How this relates to the software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline_design.html">Pipeline design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline_design.html#key-components">Key components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline_design.html#step-by-step-conceptual">Step-by-step (conceptual)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline_design.html#why-the-pipeline-is-structured-this-way">Why the pipeline is structured this way</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../outputs.html">Outputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outputs.html#main-report-artifacts">Main report artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outputs.html#haplotype-fasta-outputs">Haplotype FASTA outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outputs.html#blast-output-optional">BLAST output (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outputs.html#distances">Distances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outputs.html#intermediate-files">Intermediate files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html#mafft-failed-return-code-1-on-windows">MAFFT failed (return code 1) on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html#blast-table-is-missing">BLAST table is missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html#the-pdf-report-is-missing-a-figure">The PDF report is missing a figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html#where-are-my-intermediate-files">Where are my intermediate files?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../citation.html#protocol-paper">Protocol paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../citation.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../citation.html#external-tools">External tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Haemo Mito Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Experimental protocol context</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/methods/experimental_protocol.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="experimental-protocol-context">
+<h1>Experimental protocol context<a class="headerlink" href="#experimental-protocol-context" title="Link to this heading"></a></h1>
+<p>This documentation summarizes (at a high level) the experimental workflow described in our protocol paper:</p>
+<ul class="simple">
+<li><p>Pacheco <em>et al.</em> (2024), <em>Malaria Journal</em> — PacBio HiFi long-amplicon mt-genome protocol for haemosporidian parasites.</p></li>
+</ul>
+<p>For full wet-lab details, always refer to the published protocol.</p>
+<section id="target-region">
+<h2>Target region<a class="headerlink" href="#target-region" title="Link to this heading"></a></h2>
+<p>The protocol targets a long amplicon (~6 kb), covering close to the full length
+of the haemosporidian mitochondrial genome.</p>
+</section>
+<section id="primer-design-and-multiplexing-strategy">
+<h2>Primer design and multiplexing strategy<a class="headerlink" href="#primer-design-and-multiplexing-strategy" title="Link to this heading"></a></h2>
+<p>The protocol builds on previously reported primers (AE170 / AE171) and extends them with
+sample barcoding so many specimens can be multiplexed in one sequencing run.</p>
+<p>Target-specific primer sequences (as reported):</p>
+<ul class="simple">
+<li><p>Forward (AE170-derived): <code class="docutils literal notranslate"><span class="pre">GAT</span> <span class="pre">TCT</span> <span class="pre">CTC</span> <span class="pre">CAC</span> <span class="pre">ACT</span> <span class="pre">TCA</span> <span class="pre">ATT</span> <span class="pre">CGT</span> <span class="pre">ACT</span> <span class="pre">TC</span></code></p></li>
+<li><p>Reverse (AE171-derived): <code class="docutils literal notranslate"><span class="pre">GAA</span> <span class="pre">AAT</span> <span class="pre">WAT</span> <span class="pre">AGA</span> <span class="pre">CCG</span> <span class="pre">AAC</span> <span class="pre">CTT</span> <span class="pre">GGA</span> <span class="pre">CTC</span></code> (W = A/T)</p></li>
+</ul>
+<p>Barcoding scheme (summary):</p>
+<ul class="simple">
+<li><p>Each oligo includes a short 5′ buffer sequence, a 16 bp barcode, and the target-specific primer sequence.</p></li>
+<li><p>The paper describes 8 forward and 24 reverse barcoded oligos (32 total),
+enabling up to 192 asymmetric barcode pairs (8×24).</p></li>
+</ul>
+<p>Practical primer notes from the protocol:</p>
+<ul class="simple">
+<li><p>Oligos were ordered with 5′ phosphates and HPLC purification.</p></li>
+<li><p>In our tests, the primer set amplified diverse haemosporidian taxa (e.g., <em>Plasmodium</em>,
+<em>Haemoproteus</em>, <em>Leucocytozoon</em>) and did not show obvious genus-specific amplification bias.</p></li>
+</ul>
+</section>
+<section id="pcr-overview-summary">
+<h2>PCR overview (summary)<a class="headerlink" href="#pcr-overview-summary" title="Link to this heading"></a></h2>
+<p>The protocol describes long-amplicon PCR with a long extension time to capture the ~6 kb product.
+A typical cycling scheme in the paper includes:</p>
+<ul class="simple">
+<li><p>Initial denaturation (~94°C)</p></li>
+<li><p>~30 cycles with a short denaturation and long extension (~7 minutes)</p></li>
+<li><p>Final extension (~72°C)</p></li>
+</ul>
+<p>Amplicons are visualized on agarose gels, and gel purification is described as optional but recommended
+for cleaner library preparation.</p>
+</section>
+<section id="sequencing">
+<h2>Sequencing<a class="headerlink" href="#sequencing" title="Link to this heading"></a></h2>
+<p>Amplicons are prepared for PacBio HiFi sequencing (SMRTbell library prep) and sequenced to yield
+high-accuracy reads whose length distribution matches the expected amplicon size.</p>
+</section>
+<section id="recommended-coverage-rule-of-thumb">
+<h2>Recommended coverage (rule of thumb)<a class="headerlink" href="#recommended-coverage-rule-of-thumb" title="Link to this heading"></a></h2>
+<p>The protocol reports low per-read error rates and recommends ~30× coverage per haplotype as a minimum,
+consistent with the observed error rates in our study.</p>
+</section>
+<section id="how-this-relates-to-the-software">
+<h2>How this relates to the software<a class="headerlink" href="#how-this-relates-to-the-software" title="Link to this heading"></a></h2>
+<p>The software pipeline is designed to:</p>
+<ul class="simple">
+<li><p>Filter reads (quality thresholding)</p></li>
+<li><p>Align reads to a common coordinate system (MSA)</p></li>
+<li><p>Infer haplotypes / OTUs from the aligned reads</p></li>
+<li><p>Optionally compare haplotypes to a curated local reference set (BLAST)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../parameters/optional.html" class="btn btn-neutral float-left" title="Optional parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pipeline_design.html" class="btn btn-neutral float-right" title="Pipeline design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Escalante–Pacheco Lab (Temple University).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

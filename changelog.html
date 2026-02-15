@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog &mdash; Haemo Mito Pipeline — Escalante–Pacheco Lab</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9fd9e425" />
+
+  
+    <link rel="shortcut icon" href="_static/logo.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Citation" href="citation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Welcome</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#what-is-this-pipeline">What is this pipeline?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#what-it-is-not">What it is <em>not</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#inputs-and-outputs-at-a-glance">Inputs and outputs at a glance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#python-dependencies-core">Python dependencies (core)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#mafft">MAFFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#blast-optional">BLAST (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#build-the-docs-locally-this-website">Build the docs locally (this website)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#make-sure-mafft-works">1) Make sure MAFFT works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-the-pipeline-cli">2) Run the pipeline (CLI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#inspect-outputs">3) Inspect outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="downloads.html">Downloads</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html#windows-desktop-gui">Windows Desktop GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html#macos-desktop-gui">macOS Desktop GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html#cli-workflow">CLI workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html#data-database-downloads">Data + database downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html#update-these-placeholders">Update these placeholders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about_lab.html">About the lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about_lab.html#contact-and-links">Contact and links</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/run_cli.html">Run from the CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_cli.html#basic-run">Basic run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_cli.html#choose-output-folder-sample-name">Choose output folder + sample name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_cli.html#quality-filter-subsampling">Quality filter + subsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_cli.html#mafft-settings">MAFFT settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_cli.html#re-running-overwriting">Re-running / overwriting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/run_gui.html">Run from the GUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_gui.html#basic-panel">Basic panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_gui.html#advanced-panel-collapsible">Advanced panel (collapsible)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/run_gui.html#recommended-folder-layout-project-local-tools">Recommended folder layout (project-local tools)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/using_blast.html">Using local BLAST</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_blast.html#what-blast-is-used-for-in-this-workflow">What BLAST is used for (in this workflow)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_blast.html#install-blast">Install BLAST+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_blast.html#prepare-a-database">Prepare a database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_blast.html#run-and-verify">Run and verify</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/interpreting_results.html">Interpreting results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/interpreting_results.html#the-pdf-report">The PDF report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/interpreting_results.html#fasta-outputs">FASTA outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/interpreting_results.html#json-report">JSON report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parameters</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="parameters/essential.html">Essential parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameters/essential.html#input">Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters/essential.html#output-naming">Output naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters/essential.html#read-filtering-subsampling">Read filtering / subsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters/essential.html#alignment-mafft">Alignment (MAFFT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters/essential.html#reproducibility">Reproducibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parameters/optional.html">Optional parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameters/optional.html#blast-integration-optional">BLAST integration (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters/optional.html#primer-trimming-orientation">Primer trimming/orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters/optional.html#advanced-gui-only-toggles">Advanced GUI-only toggles</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="methods/experimental_protocol.html">Experimental protocol context</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="methods/experimental_protocol.html#target-region">Target region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methods/experimental_protocol.html#primer-design-and-multiplexing-strategy">Primer design and multiplexing strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methods/experimental_protocol.html#pcr-overview-summary">PCR overview (summary)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methods/experimental_protocol.html#sequencing">Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methods/experimental_protocol.html#recommended-coverage-rule-of-thumb">Recommended coverage (rule of thumb)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methods/experimental_protocol.html#how-this-relates-to-the-software">How this relates to the software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="methods/pipeline_design.html">Pipeline design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="methods/pipeline_design.html#key-components">Key components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methods/pipeline_design.html#step-by-step-conceptual">Step-by-step (conceptual)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methods/pipeline_design.html#why-the-pipeline-is-structured-this-way">Why the pipeline is structured this way</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="outputs.html">Outputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="outputs.html#main-report-artifacts">Main report artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outputs.html#haplotype-fasta-outputs">Haplotype FASTA outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outputs.html#blast-output-optional">BLAST output (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outputs.html#distances">Distances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outputs.html#intermediate-files">Intermediate files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#mafft-failed-return-code-1-on-windows">MAFFT failed (return code 1) on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#blast-table-is-missing">BLAST table is missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#the-pdf-report-is-missing-a-figure">The PDF report is missing a figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#where-are-my-intermediate-files">Where are my intermediate files?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="citation.html#protocol-paper">Protocol paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citation.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citation.html#external-tools">External tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Haemo Mito Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Changelog</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/changelog.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
+<p>This project is under active development.</p>
+<ul class="simple">
+<li><p><strong>Unreleased</strong>
+- Initial documentation website scaffolding (Sphinx + RTD theme)
+- Tutorials for CLI/GUI usage
+- Experimental protocol overview (high-level)</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="citation.html" class="btn btn-neutral float-left" title="Citation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Escalante–Pacheco Lab (Temple University).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
